@@ -1,0 +1,22 @@
+{
+  "name": "bestbuymonitor",
+  "version": "1.0.0",
+  "description": "This is a program created to monitor items inside of bestbuy.com. The user will provide the program with item URLs and the system will update the user based on a set of initial criteria.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Logan Orndorf",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

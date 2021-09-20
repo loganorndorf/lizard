@@ -1,0 +1,20 @@
+.item-card {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.item-card.title {
+    border-left: 5px solid teal
+}
+
+.item-card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-xs {
+    position: relative;
+    float: right;
+}

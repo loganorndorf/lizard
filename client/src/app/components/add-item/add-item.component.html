@@ -1,0 +1,33 @@
+<div *ngIf="totalItems > 0">
+    <div class="col-2 offset-5">
+        <div class="row my-2">
+            <button  
+                (click)="toggleMonitor(toggle)" 
+                class="btn btn-success" 
+                #toggle
+                id="toggle"
+            >
+                Start
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!monitorOnState">
+    <form #userForm="ngForm" (ngSubmit)="addItem()" class="form row" novalidate>
+        <div class="col">
+            <div class="row">
+                <div class="form-group mb-2 col-sm-10 has-error">
+                    <label for="addItemUrl" class="mx-1">Add Product URL</label>
+                    <input [(ngModel)]="itemModel.url" name="addItemUrl" type="text" class="form-control" id="addItemUrl" placeholder=" Enter URL">
+                </div>
+                <div class="form-group col-sm-2 align-self-end mb-2">
+                    <button type="submit" class="btn btn-info w-100">Add Product</button>
+                </div>  
+            </div>
+        </div>
+    </form> 
+</div>
+
+
+

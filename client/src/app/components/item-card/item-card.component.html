@@ -1,0 +1,12 @@
+<div class="item-card row">
+    <div class="col-11">
+        <div *ngIf="item.imageUrl.length > 1">
+            <img src="{{item.imageUrl}}" class="img-fluid mb-2" width="150px">
+        </div>
+        <h6>{{item.title}}</h6>
+        <p>{{item.price}}</p>
+    </div>
+    <div class="col-1 pl-0">
+        <fa-icon class="fa-xs" [icon]="faTimes"></fa-icon>
+    </div>
+</div>

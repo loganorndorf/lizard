@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 align-self-center">
+      <add-item (addNewItem)="addNewItem($event)"></add-item>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <app-current-item-list [itemList]="items"></app-current-item-list>
+    </div>
+    <div class="col-6">
+      <app-recent-updates-list></app-recent-updates-list>
+    </div>
+  </div>
+</div>

@@ -14,18 +14,15 @@ const scrape = async(url) => {
 
     return parsedData;
 }
-
+    
 const parse = html => {
     const $ = cheerio.load(html);
-    const data = {};
-    
-    data['title'] = $("head > meta[property='og:title']").attr("content");
-    data['price'] = $(".priceView-hero-price > span[aria-hidden]").text();
-    data['imageUrl'] = $("head > meta[property='og:image']").attr("content");
-    data['inStock'] = $(".add-to-cart-button").text() == 'Add to Cart' ? true : false;
-
-    console.log(data);
-    return data;
+    return {
+        'title': $("head > meta[property='og:title']").attr("content"),
+        'price': $(".priceView-hero-price > span[aria-hidden]").text(),
+        'imageUrl': $("head > meta[property='og:image']").attr("content"),
+        'inStock': $(".add-to-cart-button").text() == 'Add to Cart' ? true : false
+    }
 }
 
 

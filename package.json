@@ -4,12 +4,14 @@
   "description": "This is a program created to monitor items inside of bestbuy.com. The user will provide the program with item URLs and the system will update the user based on a set of initial criteria.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "mocha test.spec.js --exit -p false --timeout 20000"
   },
   "author": "Logan Orndorf",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "chai": "^4.3.4",
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -17,6 +19,8 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.2",
     "nodemon": "^2.0.7"
   }
 }

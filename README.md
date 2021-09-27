@@ -27,3 +27,8 @@ npm start
 ## Use
 After starting, access the app on your localhost at port 4200
 
+## Upcoming
+* Better Testing
+* Discord/Slack Notifications
+* Decreased load times - i.e. use of caching in Monitor.js
+* Inrease in user friendliness on the main Monitor screen

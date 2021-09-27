@@ -4,7 +4,7 @@ const mongoose  = require('mongoose');
 const cors      = require('cors');
 const path      = require('path');
 
-const Monitor   = require('./src/Monitor');
+const Monitor   = require('./server/src/Monitor');
 const lizard    = new Monitor();
 
 // APP CREATION
@@ -12,8 +12,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // CONTROLLER
-const { deleteAll, createItem, getAll, deleteItem } = require('./controllers/items-controller');
-const { scrape } = require('./src/Scrape');
+const { deleteAll, createItem, getAll, deleteItem } = require('./server/controllers/items-controller');
+const { scrape } = require('./server/src/Scrape');
 
 // db connection
 mongoose.connect('mongodb://localhost:27017/best-buy', {
@@ -37,7 +37,7 @@ app.post('/item', async(req, res) => {
     const { url } = req.body;
     const fullItem = await scrape(url);
 
-    const { id, title, price, imageUrl, inStock} = await createItem(fullItem);
+    const { id, title, price, imageUrl, inStock } = await createItem(fullItem);
     res.send({
         id,
         url,
@@ -49,8 +49,8 @@ app.post('/item', async(req, res) => {
 })
 
 app.get('/item', async(req, res) => {
-    const allItems = await getAll();
-
+    const allItems = await getAll()
+    res.send(allItems)
 })
 
 app.delete('/item/:productUrl', async(req, res) => {
@@ -58,10 +58,8 @@ app.delete('/item/:productUrl', async(req, res) => {
     const deleted = await deleteItem({productUrl});
 })
 
-// toggle monitor on/off
 app.post('/toggle', (req, res) => {
-    console.log(req.body);
-    lizard.startScraping();
+    lizard.toggle();
 })
 
 
@@ -85,3 +83,5 @@ app.listen(port, () => {
     - Dependency injection
     - Pipes, and Templates
 */
+
+module.exports = app;

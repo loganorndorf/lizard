@@ -7,12 +7,16 @@ module.exports.deleteAll = async(req, res) => {
 }
 
 module.exports.createItem = async(req, res) => {
-
     const existingItem = await Items.findOne({url: req.url});
     if(!existingItem) {
         const newItem = new Items(req);
         const savedItem = await newItem.save();
         return savedItem;
+    } else {
+        return Error({
+            code: 500,
+            message: "Item already exists"
+        });
     }
 }
 
@@ -24,15 +28,14 @@ module.exports.deleteItem = async(req, res) => {
     } 
 }
 
-// will be used by 
 module.exports.getAll = async(req, res) => {
-    const allItems = Items.find({});
+    const allItems = await Items.find({});
     return allItems;
 }
 
-// will be done internally. User won't be allowed to change data after initial link submission
-module.exports.updateItem = async() => {
-
+module.exports.updateItem = async(query, newData) => {
+    const updated = await Items.findOneAndUpdate(query, newData);
+    return updated;
 }
 
 
